@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> partials/head title="Home - NITSAN Basesite"}}
+  </head>
+  <body>
+
+    <!-- START OF PAGE HEADER -->
+    {{> partials/navbar}}
+
+    <!-- MAIN -->
+    <main class="site-main">
+      <section class="content-section">
+          <div class="container">
+              <div class="text-center">
+                  <h1>WE ARE NITSAN TECHNOLOGIES</h1>
+                  <p>We are a client-focused, TYPO3 certified digital agency based in India. NITSAN Technologies, a TYPO3 Professional Service Agency with Headquarters in India (Bhavnagar) and a Branch in Austria (Vienna) with 7 Years of experience in Inter-Agency Business. </p>
+                  <p>Layload Image In Picture</p>
+                  <picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="{{webRoot}}/assets/images/large-image.jpg" data-alt="">
+                      <source srcset="{{webRoot}}/assets/images/large-image.jpg" media="(min-width: 1200px)">
+                      <source srcset="{{webRoot}}/assets/images/medium-image.jpg" media="(min-width: 768px)">
+                      <source srcset="{{webRoot}}/assets/images/small-image.jpg" media="(min-width: 320px)">
+                      <img src="data:," alt="img">
+                  </picture>
+              </div>
+              <br>
+              <div class="mt-5 mb-5">
+                  <h2>WE ARE DIGITAL EXPERTS</h2>
+                  <p>The digital media is changing very fast and confronts companies with new challenges every day. We are a team of enthusiastic in-house web & app developers and we will help your company master these challenges with passion.</p>
+                  <br>
+                  <h2>Layload Image In background</h2>
+                  <!-- background image example -->
+                  <div class="lozad bg-img bg-img--content" data-background-image="{{webRoot}}/assets/images/small-image.jpg">
+                    <p>Are you looking for a CMS that is modular, extensible, powerful and advanced? Get ready to create TYPO3-enabled applications and websites for your business. TYPO3 modules present immense possibilities for your websites, intranets, as well as web/mobile applications. Explore the magic of TYPO3 development at NITSAN. We help you leverage the many benefits of this open source scripting language.</p>
+                  </div>
+                  <br>
+                  <h2>Lazyload in iframe</h2>
+                  <article class="frame mt-4 mb-4">
+                      <iframe class="lozad" style="max-width: 100%;" width="370" height="242" data-src="index.html" src="data:,"></iframe>
+                  </article>
+                  <p>Are you the owner of a start-up that’s aiming for quick growth? Alternatively, are you managing an established company with specific business needs? Be it for small business websites or multi-lingual corporate portals, TYPO3 CMS is the right choice for enterprises in all industry verticals.</p>
+                  <p>Learn to control the images, textual content and plugins on your website without any prior knowledge of HTML, CSS, web-programming or design. We boast of simple yet impactful editing and administration tools that will help you manage your published content, away from your website’s layout or design. Our TYPO3 CMS services are useful for the creation,management and output of the kind of digital content that you desire. </p>
+              </div>
+          </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    {{> partials/footer}}
+
+    <!-- JAVASCRIPT -->
+    {{> partials/scripts}}
+
+  </body>
+</html>

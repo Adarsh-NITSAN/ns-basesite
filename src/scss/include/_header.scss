@@ -1,0 +1,194 @@
+/*******************************************************************************
+* PAGE HEADER
+*******************************************************************************/
+.page-header {
+  @include inline-block;
+  background-color: #eee;
+  box-shadow: 1px 0 5px rgba(2, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.header-main {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding: 10px 0;
+  position: relative;
+  width: 100%;
+}
+
+.navigation {
+  @include transition(opacity, 0.2s, ease, 0s);
+  background-color: #fff;
+  color: $brand-color;
+  height: calc(100% - 66px);
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: auto;
+  padding: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 66px;
+  width: 100%;
+  z-index: 999;
+}
+
+.nav-items {
+  list-style: none;
+  margin: 0;
+  padding: 9px 0;
+  position: relative;
+  width: 100%;
+
+  li {
+    @include inline-block;
+    list-style: none;
+    position: relative;
+    width: 100%;
+
+    a {
+      @extend %fontsize18;
+      color: $brand-color;
+      font-weight: $regular-weight;
+
+      &:hover {
+        color: $brand-color;
+      }
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+nav {
+  overflow: auto;
+  width: 100%;
+
+  > ul {
+    > li {
+      border-bottom: 1px solid $brand-color;
+
+      > a {
+        display: block;
+        padding: 12px 30px 12px 15px;
+        position: relative;
+        z-index: 99;
+      }
+    }
+  }
+}
+
+.nav-items > .active > a,
+.nav-items > li:hover > a {
+  color: $brand-color;
+}
+
+.brand-logo {
+  @include inline-block;
+
+  img {
+    max-width: 165px;
+  }
+}
+
+.menu-trigger {
+  @include transition(all, 0.2s, ease, 0s);
+  cursor: pointer;
+  height: 21px;
+  opacity: 1;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  width: 28px;
+  z-index: 3;
+
+  .bars {
+    @include transition(all, 0.2s, ease, 0s);
+    background-color: $brand-color;
+    border-radius: 0;
+    height: 3px;
+    margin-bottom: 6px;
+    width: 100%;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.menu--open {
+  overflow: hidden;
+
+  .navigation {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .bars {
+    &:first-child {
+      transform: translateY(9px) rotate(136deg);
+    }
+
+    &:last-child {
+      transform: translateY(-9px) rotate(-136deg);
+    }
+
+    &:nth-child(2) {
+      transform: scale(0);
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .header-main {
+    @include justify-content(space-between);
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 15px;
+  }
+
+  .menu-trigger {
+    display: none;
+  }
+
+  .navigation {
+    @include box-shadow(none);
+    background-color: transparent;
+    height: auto;
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    top: 0;
+    width: auto;
+    z-index: 1;
+  }
+
+  .nav-items {
+    @include flexbox;
+
+    > li {
+      border: 0;
+      margin-left: 20px;
+      padding: 25px;
+      position: relative;
+      width: auto;
+
+      > a {
+        padding: 0;
+      }
+    }
+  }
+
+  .brand-logo {
+    img {
+      max-width: 200px;
+    }
+  }
+}

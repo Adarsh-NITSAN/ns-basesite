@@ -1,0 +1,67 @@
+/*******************************************************************************
+* Content Section
+*******************************************************************************/
+.content-section {
+  padding: 40px 0;
+
+  br {
+    display: none;
+  }
+}
+
+main {
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    ul {
+      padding-left: 15px;
+    }
+  }
+
+  ol {
+    counter-reset: my-badass-counter;
+    margin: 12px 0 25px;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      margin-bottom: 10px;
+      padding-left: 35px;
+      position: relative;
+
+      &::before {
+        content: counter(my-badass-counter, upper-roman) '.';
+        counter-increment: my-badass-counter;
+        font-weight: $bold-weight;
+        left: 1px;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .content-section {
+    padding: 110px 0;
+
+    br {
+      display: block;
+    }
+  }
+
+  main {
+    ol {
+      margin: 15px 0 35px;
+
+      li {
+        margin-bottom: 15px;
+        padding-left: 42px;
+      }
+    }
+  }
+}

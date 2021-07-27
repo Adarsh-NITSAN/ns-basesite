@@ -1,0 +1,33 @@
+/*******************************************************************************
+* General
+*******************************************************************************/
+.site-main {
+  margin-top: 66px;
+  position: relative;
+  z-index: 1;
+}
+
+.no-scrollbar {
+  overflow: hidden;
+}
+
+@include media-breakpoint-up(lg) {
+  .site-main {
+    margin-top: 96px;
+    min-height: 600px;
+  }
+}
+
+.bg-img {
+  @include bg-img;
+}
+
+.bg-img--content {
+  margin: 15px 0;
+  padding: 50px;
+
+  p {
+    color: $white;
+    max-width: 40%;
+  }
+}

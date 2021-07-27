@@ -1,0 +1,37 @@
+//* This is the main application stylesheet. It should include or import all
+//* custom and vendor stylesheets.
+
+//****************************************************************************
+//  Include our own variables and the ones that override the Bootstrap variables
+//  Always include this file first
+//***************************************************************************/
+@import 'base/variables';
+
+//****************************************************************************
+//  Include a custom build of the Twitter Bootstrap SCSS files.
+//***************************************************************************/
+@import '~aos/dist/aos.css';
+@import '~bootstrap/scss/bootstrap';
+
+//****************************************************************************
+//  Include base styles
+//***************************************************************************/
+@import 'mixins/mixins';
+@import 'base/extensions';
+@import 'base/typography';
+
+//****************************************************************************
+//  Include plugins styles
+//***************************************************************************/
+@import 'plugin/font-awesome';
+
+//****************************************************************************
+//  Include our custom styles
+//***************************************************************************/
+@import 'include/header';
+@import 'include/footer';
+@import 'include/content-section';
+@import 'include/general';
+@import 'include/button';
+@import 'include/form';
+@import 'include/cms';

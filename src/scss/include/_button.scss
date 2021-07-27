@@ -1,0 +1,45 @@
+/*******************************************************************************
+* Button
+*******************************************************************************/
+.btn {
+  @extend %fontsize18;
+  @include transition(all, 0.2s, ease, 0s);
+  @include inline-block();
+  background-color: $brand-color;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: $white;
+  margin: 0;
+  outline: 0;
+  padding: 8px 15px;
+  white-space: normal;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $secondary-color;
+    color: $white;
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn.btn-secondary {
+  background-color: $secondary-color;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $primary-color;
+    color: $white;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .btn {
+    padding: 9px 25px;
+  }
+}
