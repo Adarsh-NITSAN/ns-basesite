@@ -27,7 +27,6 @@ const paths = {
 module.exports = {
   devtool: 'source-map',
   entry: {
-    'demo':             [paths.src.js + '/demo.js'],
     'theme':            [paths.src.js + '/theme.js', paths.src.scss + '/style.scss'],
   },
   mode: 'development',

@@ -16,7 +16,7 @@
     "@popperjs/core": "^2.6.0",
     "@tannerhodges/match-height": "^1.1.1",
     "aos": "^3.0.0-beta.6",
-    "bootstrap": "^5.0.0-beta1",
+    "bootstrap": "^5.1.2",
     "lozad": "^1.16.0"
   },
   "devDependencies": {
