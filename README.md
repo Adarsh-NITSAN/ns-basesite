@@ -22,21 +22,23 @@ basesite/
 ├── index.html              # Main HTML file (optimized)
 ├── vite.config.js          # Vite configuration
 ├── package.json            # Dependencies and scripts
+├── public/                 # Static assets (served directly)
+│   └── assets/
+│       ├── images/         # Optimized images
+│       ├── fonts/          # Web fonts (Open Sans, Font Awesome)
+│       └── favicon/        # Favicon assets
 ├── src/
 │   ├── js/
 │   │   ├── main.js         # Main application entry point
 │   │   ├── theme.js        # Theme configuration
 │   │   ├── aos.js          # Animate On Scroll
 │   │   └── demo.js         # Menu functionality & Lozad init
-│   ├── scss/
-│   │   ├── style.scss      # Main stylesheet
-│   │   ├── base/           # Base styles (variables, typography, extensions)
-│   │   ├── include/        # Component styles (header, footer, buttons, etc.)
-│   │   ├── mixins/         # Sass mixins
-│   │   └── plugin/         # Third-party styles (Font Awesome)
-│   ├── images/             # Optimized images
-│   ├── fonts/              # Web fonts (Open Sans, Font Awesome)
-│   └── favicon/            # Favicon assets
+│   └── scss/
+│       ├── style.scss      # Main stylesheet
+│       ├── base/           # Base styles (variables, typography, extensions)
+│       ├── include/        # Component styles (header, footer, buttons, etc.)
+│       ├── mixins/         # Sass mixins
+│       └── plugin/         # Third-party styles (Font Awesome)
 └── dist/                   # Production build output
 ```
 
@@ -90,6 +92,7 @@ yarn preview
 - Sass deprecation warnings silenced
 - Asset optimization enabled
 - Single entry point (index.html)
+- Public assets served directly from `/public` directory
 
 ### Bootstrap Integration
 - Full Bootstrap 5.3.7 integration
@@ -112,6 +115,19 @@ The project has been cleaned up to remove:
 - ❌ Unused `placeholder_196x156.jpg` image
 - ❌ Unused favicon files (browserconfig.xml, favicon.ico, mstile-150x150.png, safari-pinned-tab.svg, android-chrome-144x144.png)
 - ❌ Old build artifacts in `dist/` directory
+
+## 🗂️ Asset Organization
+
+**Static Assets in `/public/assets/`:**
+- **Images**: Direct access via `/assets/images/`
+- **Fonts**: Direct access via `/assets/fonts/`
+- **Favicons**: Direct access via `/assets/favicon/`
+
+**Benefits of Public Assets:**
+- ✅ **Direct serving** - No processing overhead
+- ✅ **Better caching** - Static assets cached effectively
+- ✅ **Cleaner URLs** - Simple `/assets/` paths
+- ✅ **Better organization** - Clear separation from source code
 
 ## 🚀 Deployment
 
