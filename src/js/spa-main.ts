@@ -1,32 +1,22 @@
+/// <reference path="./types.d.ts" />
 import { SPA } from './spa/app';
 import { SPAConfig } from './spa/types';
-
-// Import theme configuration
 import './theme.js';
-
-// Import demo.js for menu functionality
 import './demo.js';
-
-// Initialize AOS (Animate On Scroll)
+import 'flickity/css/flickity.css';
+import Flickity from 'flickity';
 import AOS from 'aos';
+import { Tooltip, Popover } from 'bootstrap';
+
 AOS.init({
   duration: 800,
   easing: 'ease-in-out',
   once: true
 });
 
-// Initialize Bootstrap tooltips and popovers
-import { Tooltip, Popover } from 'bootstrap';
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new Tooltip(el));
+document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => new Popover(el));
 
-// Initialize tooltips
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl));
-
-// Initialize popovers
-const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new Popover(popoverTriggerEl));
-
-// SPA Configuration
 const spaConfig: SPAConfig = {
   rootElement: '.site-main',
   enableHistoryAPI: true,
@@ -59,123 +49,107 @@ const spaConfig: SPAConfig = {
   }
 };
 
-// Initialize SPA
 let spa: SPA;
 
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    spa = new SPA(spaConfig);
+function initializeFlickity() {
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach((carousel) => {
+    const carouselEl = carousel as any;
+    if (carouselEl._flickity) {
+      carouselEl._flickity.destroy();
+    }
     
-    // Set up component re-initialization
-    spa.getEventBus().on('componentsReinitialize', () => {
-      console.log('🔄 Re-initializing components...');
-      
-      // Re-initialize AOS
-      if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-      }
-      
-      // Re-initialize Bootstrap components
-      if (typeof window.bootstrap !== 'undefined') {
-        // Re-initialize tooltips
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        tooltipTriggerList.forEach(el => {
-          if (!el._tooltip) {
-            new window.bootstrap.Tooltip(el);
-          }
-        });
+    const flickity = new Flickity(carousel as HTMLElement, {
+      wrapAround: true,
+      autoPlay: 3000,
+      cellAlign: 'left',
+      contain: true
+    });
+    
+    carouselEl._flickity = flickity;
+  });
+}
 
-        // Re-initialize popovers
-        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-        popoverTriggerList.forEach(el => {
-          if (!el._popover) {
-            new window.bootstrap.Popover(el);
-          }
-        });
-      }
-      
-      // Load images directly (no lazy loading)
-      loadImagesDirectly();
-    });
-    
-    // Set up loading indicators
-    spa.getEventBus().on('loadingStarted', () => {
-      console.log('⏳ Loading started...');
-      // You can add a loading spinner here
-    });
-    
-    spa.getEventBus().on('loadingFinished', () => {
-      console.log('✅ Loading finished');
-      // Hide loading spinner
-    });
-    
-    // Set up state change listener
-    spa.getStore().subscribe((state) => {
-      console.log('📊 State changed:', state);
-    });
-    
-    console.log('🚀 Custom SPA initialized successfully!');
-    
-  } catch (error) {
-    console.error('❌ Failed to initialize SPA:', error);
-  }
-});
-
-// Simple function to load images directly
 function loadImagesDirectly() {
-  console.log('🖼️ Loading images directly...');
-  
-  // Handle images with data-src
   const lazyImages = document.querySelectorAll('img[data-src]');
   lazyImages.forEach(img => {
-    if (img.dataset.src) {
-      img.src = img.dataset.src;
-      img.classList.add('loaded');
-      console.log('✅ Loaded image:', img.dataset.src);
+    const imageEl = img as HTMLImageElement;
+    if (imageEl.dataset.src) {
+      imageEl.src = imageEl.dataset.src;
+      imageEl.classList.add('loaded');
     }
   });
 
-  // Handle picture elements with data-src
   const lazyPictures = document.querySelectorAll('picture[data-src]');
   lazyPictures.forEach(picture => {
     const img = picture.querySelector('img');
-    if (img && picture.dataset.src) {
-      img.src = picture.dataset.src;
+    const pictureEl = picture as HTMLElement;
+    if (img && pictureEl.dataset.src) {
+      img.src = pictureEl.dataset.src;
       img.classList.add('loaded');
-      console.log('✅ Loaded picture image:', picture.dataset.src);
     }
   });
 
-  // Handle background images
   const backgroundElements = document.querySelectorAll('[data-background-image]');
   backgroundElements.forEach(el => {
-    if (el.dataset.backgroundImage) {
-      el.style.backgroundImage = `url(${el.dataset.backgroundImage})`;
-      el.classList.add('loaded');
-      console.log('✅ Loaded background image:', el.dataset.backgroundImage);
+    const element = el as HTMLElement;
+    if (element.dataset.backgroundImage) {
+      element.style.backgroundImage = `url(${element.dataset.backgroundImage})`;
+      element.classList.add('loaded');
     }
   });
 
-  // Handle iframes
   const lazyIframes = document.querySelectorAll('iframe[data-src]');
   lazyIframes.forEach(iframe => {
-    if (iframe.dataset.src) {
-      iframe.src = iframe.dataset.src;
-      iframe.classList.add('loaded');
-      console.log('✅ Loaded iframe:', iframe.dataset.src);
+    const iframeEl = iframe as HTMLIFrameElement;
+    if (iframeEl.dataset.src) {
+      iframeEl.src = iframeEl.dataset.src;
+      iframeEl.classList.add('loaded');
     }
   });
 }
 
-// Load images on initial page load
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🖼️ Initial page load - loading images directly...');
-  loadImagesDirectly();
-});
+function initializeBootstrapComponents() {
+  if (typeof (window as any).bootstrap !== 'undefined') {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach(el => {
+      const element = el as any;
+      if (!element._tooltip) {
+        new (window as any).bootstrap.Tooltip(element);
+      }
+    });
 
-// Console log for development
-console.log('🚀 NITSAN Technologies - Custom SPA System');
-console.log('📦 Virtual DOM enabled');
-console.log('🔄 Client-side routing enabled');
-console.log('📊 State management enabled');
-console.log('🖼️ Direct image loading enabled');
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    popoverTriggerList.forEach(el => {
+      const element = el as any;
+      if (!element._popover) {
+        new (window as any).bootstrap.Popover(element);
+      }
+    });
+  }
+}
+
+function reinitializeComponents() {
+  if (typeof AOS !== 'undefined') {
+    AOS.refresh();
+  }
+  
+  initializeBootstrapComponents();
+  initializeFlickity();
+  loadImagesDirectly();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  spa = new SPA(spaConfig);
+  
+  spa.getEventBus().on('componentsReinitialize', reinitializeComponents);
+  
+  spa.getEventBus().on('loadingStarted', () => {});
+  
+  spa.getEventBus().on('loadingFinished', () => {});
+  
+  spa.getStore().subscribe(() => {});
+  
+  loadImagesDirectly();
+  initializeFlickity();
+});
