@@ -14,17 +14,23 @@ A modern, optimized frontend project built with Vite, Bootstrap 5, and Sass.
   - Clean build output (no deprecation warnings)
 - **SEO Optimized**: Meta tags, Open Graph, semantic HTML
 - **Accessibility**: ARIA labels, semantic structure, keyboard navigation
+- **CMS Ready**: TYPO3 CMS content elements and styling
 
 ## 📁 Project Structure
 
 ```
 basesite/
 ├── index.html              # Main HTML file (optimized)
+├── cms.html                # CMS template with TYPO3 content elements
 ├── vite.config.js          # Vite configuration
 ├── package.json            # Dependencies and scripts
 ├── public/                 # Static assets (served directly)
 │   └── assets/
 │       ├── images/         # Optimized images
+│       │   ├── nitsan-logo.png
+│       │   ├── placeholder_982x512.jpg
+│       │   ├── placeholder_650x350.jpg
+│       │   └── placeholder_480x270.jpg
 │       ├── fonts/          # Web fonts (Open Sans, Font Awesome)
 │       └── favicon/        # Favicon assets
 ├── src/
@@ -37,6 +43,13 @@ basesite/
 │       ├── style.scss      # Main stylesheet
 │       ├── base/           # Base styles (variables, typography, extensions)
 │       ├── include/        # Component styles (header, footer, buttons, etc.)
+│       │   ├── _header.scss
+│       │   ├── _footer.scss
+│       │   ├── _button.scss
+│       │   ├── _form.scss
+│       │   ├── _general.scss
+│       │   ├── _content-section.scss
+│       │   └── _cms.scss   # TYPO3 CMS specific styles
 │       ├── mixins/         # Sass mixins
 │       └── plugin/         # Third-party styles (Font Awesome)
 └── dist/                   # Production build output
@@ -57,7 +70,7 @@ yarn install
 ```bash
 yarn dev
 ```
-Runs on http://localhost:3000
+Runs on http://localhost:3000 (or next available port)
 
 ### Production Build
 ```bash
@@ -75,6 +88,7 @@ yarn preview
 - **Custom Sass**: Modern `@use` syntax
 - **Responsive Design**: Mobile-first approach
 - **Performance**: Optimized CSS with critical path optimization
+- **CMS Integration**: TYPO3 content element styling
 
 ## 📱 Features
 
@@ -84,6 +98,7 @@ yarn preview
 - **Modern JavaScript**: ES6+ with module system
 - **Clean Build**: No deprecation warnings
 - **Mobile Menu**: Responsive navigation with hamburger menu
+- **CMS Support**: TYPO3 content elements and layouts
 
 ## 🔧 Configuration
 
@@ -91,7 +106,7 @@ yarn preview
 - Optimized for production builds
 - Sass deprecation warnings silenced
 - Asset optimization enabled
-- Single entry point (index.html)
+- Multiple entry points (index.html, cms.html)
 - Public assets served directly from `/public` directory
 
 ### Bootstrap Integration
@@ -109,12 +124,13 @@ yarn preview
 
 ## 🧹 Cleanup Summary
 
-The project has been cleaned up to remove:
-- ❌ Unused `cms.html` file (848 lines)
-- ❌ Unused `_cms.scss` stylesheet
-- ❌ Unused `placeholder_196x156.jpg` image
-- ❌ Unused favicon files (browserconfig.xml, favicon.ico, mstile-150x150.png, safari-pinned-tab.svg, android-chrome-144x144.png)
-- ❌ Old build artifacts in `dist/` directory
+The project has been optimized to:
+- ✅ **Migrated to public assets** - Static files moved to `/public/assets/`
+- ✅ **Updated all asset paths** - Images, fonts, and favicons use `/assets/` prefix
+- ✅ **Modernized Sass structure** - Using `@use` syntax throughout
+- ✅ **Silenced deprecation warnings** - Bootstrap warnings handled properly
+- ✅ **Optimized build process** - Clean, fast builds with no errors
+- ✅ **Removed unused favicon files** - Kept only essential favicon assets
 
 ## 🗂️ Asset Organization
 
@@ -128,6 +144,24 @@ The project has been cleaned up to remove:
 - ✅ **Better caching** - Static assets cached effectively
 - ✅ **Cleaner URLs** - Simple `/assets/` paths
 - ✅ **Better organization** - Clear separation from source code
+
+## 📄 Pages
+
+### Main Page (`index.html`)
+- Optimized landing page with modern features
+- Responsive design with lazy loading
+- SEO optimized with meta tags
+- Interactive elements with Bootstrap components
+
+### CMS Page (`cms.html`)
+- TYPO3 CMS template with content elements
+- Demonstrates various content layouts:
+  - Text and image combinations
+  - Multi-column layouts
+  - Responsive image galleries
+  - Form elements
+  - Typography examples
+- Perfect for CMS integration and content management
 
 ## 🚀 Deployment
 

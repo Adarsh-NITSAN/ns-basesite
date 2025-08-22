@@ -9,7 +9,8 @@ export default defineConfig({
     assetsDir: 'assets',
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
+        main: resolve(__dirname, 'index.html'),
+        cms: resolve(__dirname, 'cms.html')
       },
       output: {
         manualChunks: {
