@@ -1,9 +1,16 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import typescript from '@rollup/plugin-typescript';
 
 export default defineConfig({
   root: '.',
   publicDir: 'public',
+  plugins: [
+    typescript({
+      tsconfig: './tsconfig.json',
+      declaration: false
+    })
+  ],
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -15,8 +22,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['bootstrap', '@popperjs/core'],
-          aos: ['aos'],
-          lozad: ['lozad']
+          aos: ['aos']
         }
       }
     },
@@ -48,6 +54,6 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    include: ['bootstrap', '@popperjs/core', 'aos', 'lozad']
+    include: ['bootstrap', '@popperjs/core', 'aos']
   }
 });

@@ -11,4 +11,3 @@ import 'bootstrap';
 // Theme
 import './aos';
 import './demo';
-import './speedbooster';
