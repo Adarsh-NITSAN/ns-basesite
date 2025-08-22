@@ -27,15 +27,16 @@ basesite/
 │   │   ├── main.js         # Main application entry point
 │   │   ├── theme.js        # Theme configuration
 │   │   ├── aos.js          # Animate On Scroll
-│   │   └── demo.js         # Demo functionality
+│   │   └── demo.js         # Menu functionality & Lozad init
 │   ├── scss/
 │   │   ├── style.scss      # Main stylesheet
-│   │   ├── base/           # Base styles (variables, typography, etc.)
-│   │   ├── include/        # Component styles
+│   │   ├── base/           # Base styles (variables, typography, extensions)
+│   │   ├── include/        # Component styles (header, footer, buttons, etc.)
 │   │   ├── mixins/         # Sass mixins
-│   │   └── plugin/         # Third-party styles
+│   │   └── plugin/         # Third-party styles (Font Awesome)
 │   ├── images/             # Optimized images
-│   └── fonts/              # Web fonts
+│   ├── fonts/              # Web fonts (Open Sans, Font Awesome)
+│   └── favicon/            # Favicon assets
 └── dist/                   # Production build output
 ```
 
@@ -80,6 +81,7 @@ yarn preview
 - **Smooth Animations**: AOS (Animate On Scroll)
 - **Modern JavaScript**: ES6+ with module system
 - **Clean Build**: No deprecation warnings
+- **Mobile Menu**: Responsive navigation with hamburger menu
 
 ## 🔧 Configuration
 
@@ -87,7 +89,7 @@ yarn preview
 - Optimized for production builds
 - Sass deprecation warnings silenced
 - Asset optimization enabled
-- Multiple entry points support
+- Single entry point (index.html)
 
 ### Bootstrap Integration
 - Full Bootstrap 5.3.7 integration
@@ -101,6 +103,15 @@ yarn preview
 - **Loading Speed**: Critical resources preloaded
 - **SEO Score**: Optimized meta tags and structure
 - **Accessibility**: WCAG compliant markup
+
+## 🧹 Cleanup Summary
+
+The project has been cleaned up to remove:
+- ❌ Unused `cms.html` file (848 lines)
+- ❌ Unused `_cms.scss` stylesheet
+- ❌ Unused `placeholder_196x156.jpg` image
+- ❌ Unused favicon files (browserconfig.xml, favicon.ico, mstile-150x150.png, safari-pinned-tab.svg, android-chrome-144x144.png)
+- ❌ Old build artifacts in `dist/` directory
 
 ## 🚀 Deployment
 

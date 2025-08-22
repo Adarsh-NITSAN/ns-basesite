@@ -13,21 +13,26 @@ AOS.init({
   once: true
 });
 
-// Initialize Lozad (Lazy Loading)
+// Import lozad for background image handling
 import lozad from 'lozad';
-const observer = lozad('.lozad', {
-  loaded: function(el) {
-    el.classList.add('loaded');
-    console.log('Lozad loaded element:', el);
 
-    // Handle background images
-    if (el.dataset.backgroundImage) {
-      el.style.backgroundImage = `url(${el.dataset.backgroundImage})`;
-      console.log('Background image set:', el.dataset.backgroundImage);
+// Lozad is initialized in demo.js
+// Additional Lozad configuration for background images
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = lozad('.lozad', {
+    loaded: function(el) {
+      el.classList.add('loaded');
+      console.log('Lozad loaded element:', el);
+
+      // Handle background images
+      if (el.dataset.backgroundImage) {
+        el.style.backgroundImage = `url(${el.dataset.backgroundImage})`;
+        console.log('Background image set:', el.dataset.backgroundImage);
+      }
     }
-  }
+  });
+  observer.observe();
 });
-observer.observe();
 
 // Initialize Bootstrap tooltips and popovers
 import { Tooltip, Popover } from 'bootstrap';
