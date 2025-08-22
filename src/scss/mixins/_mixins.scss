@@ -1,9 +1,7 @@
 // Inlineblock
 @mixin inline-block() {
-  *display: inline;
   display: inline-block;
   vertical-align: top;
-  zoom: 1;
 }
 
 @mixin absoluted-fullwidth {

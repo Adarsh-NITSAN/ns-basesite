@@ -1,3 +1,7 @@
+@use '../base/variables' as *;
+@use '../mixins/mixins' as *;
+@use '../base/extensions' as *;
+
 /*******************************************************************************
 * Button
 *******************************************************************************/
@@ -38,7 +42,7 @@ button:focus {
   }
 }
 
-@include media-breakpoint-up(sm) {
+@media (min-width: 576px) {
   .btn {
     padding: 9px 25px;
   }

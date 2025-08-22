@@ -1,12 +1,12 @@
+@use '../base/variables' as *;
+@use '../mixins/mixins' as *;
+
 /*******************************************************************************
-* Footer
+* PAGE FOOTER
 *******************************************************************************/
 .page-footer {
-  background-color: #eee;
   border-top: 1px solid $brand-color;
-  color: $brand-color;
-  font-family: $font-primary;
-  padding: 26px 0 12px;
+  padding: 30px 0;
   text-align: center;
 }
 
@@ -64,7 +64,7 @@
   }
 }
 
-@include media-breakpoint-up(md) {
+@media (min-width: 768px) {
   .page-footer {
     padding: 45px 0 20px;
   }

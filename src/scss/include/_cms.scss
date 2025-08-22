@@ -1,3 +1,5 @@
+@use '../base/variables' as *;
+
 /****************************************************************************
  * TYPO3 CMS Styles
  ***************************************************************************/
@@ -214,7 +216,7 @@ hr {
   }
 }
 
-@include media-breakpoint-up(md) {
+@media (min-width: 768px) {
   .ce-left .ce-gallery,
   .ce-column {
     float: left;
@@ -243,7 +245,7 @@ hr {
   }
 }
 
-@include media-breakpoint-up(lg) {
+@media (min-width: 992px) {
   .frame {
     .ce-textpic {
       &.ce-left {

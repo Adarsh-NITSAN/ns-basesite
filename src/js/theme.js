@@ -2,6 +2,9 @@
 // theme.js
 //
 
+// Import main styles
+import '../scss/style.scss';
+
 // Vendor
 import 'bootstrap';
 

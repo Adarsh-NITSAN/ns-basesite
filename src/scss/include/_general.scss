@@ -1,3 +1,6 @@
+@use '../base/variables' as *;
+@use '../mixins/mixins' as *;
+
 /*******************************************************************************
 * General
 *******************************************************************************/
@@ -11,7 +14,7 @@
   overflow: hidden;
 }
 
-@include media-breakpoint-up(lg) {
+@media (min-width: 992px) {
   .site-main {
     margin-top: 96px;
     min-height: 600px;
@@ -20,14 +23,27 @@
 
 .bg-img {
   @include bg-img;
+  position: relative;
+
+  // Ensure images are visible
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 
 .bg-img--content {
   margin: 15px 0;
   padding: 50px;
+  min-height: 300px;
+  background-color: #f8f9fa; // Fallback color
+  border-radius: 8px;
 
   p {
     color: $white;
     max-width: 40%;
+    position: relative;
+    z-index: 2;
   }
 }
