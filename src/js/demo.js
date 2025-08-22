@@ -2,11 +2,7 @@
 // demo.js
 //
 
-import lozad from 'lozad';
-
-// Init lozad(Lazyload)
-const observer = lozad();
-observer.observe();
+// Menu functionality only (no lazy loading)
 
 const $body = document.body;
 
@@ -17,3 +13,5 @@ if (menuTrigger) {
     $body.classList.toggle('menu--open');
   });
 }
+
+console.log('🎛️ Menu functionality initialized');

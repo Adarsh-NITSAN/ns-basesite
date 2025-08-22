@@ -14,11 +14,11 @@
     "lint:stylesheets": "stylelint --syntax scss src/**/*.scss"
   },
   "dependencies": {
+    "@nitsantechnologies/vanilla-site-speed-booster": "^1.3.0",
     "@popperjs/core": "^2.11.8",
     "@tannerhodges/match-height": "^1.1.1",
     "aos": "^3.0.0-beta.6",
-    "bootstrap": "^5.3.7",
-    "lozad": "^1.16.0"
+    "bootstrap": "^5.3.7"
   },
   "devDependencies": {
     "@namics/stylelint-bem": "^6.3.4",
